@@ -643,11 +643,7 @@
     border: 1px solid var(--nude);
   }
 
-  /* ─── GALERIA ─── */
-  #galeria {
-    background: var(--nude);
-    padding-bottom: 0;
-  }
+  /* ─── GALERIA / INSTAGRAM EMBEDS ─── */
   .galeria-intro {
     display: flex;
     justify-content: space-between;
@@ -656,53 +652,22 @@
     flex-wrap: wrap;
     gap: 1rem;
   }
-  .galeria-grid {
+  .ig-embeds-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 3px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: start;
   }
-  .galeria-item {
-    aspect-ratio: 1;
-    background: var(--nude-deep);
-    overflow: hidden;
-    position: relative;
+  .ig-embeds-grid .instagram-media {
+    border-radius: 4px !important;
+    box-shadow: none !important;
   }
-  .galeria-item:first-child {
-    grid-column: span 2;
-    grid-row: span 2;
+  @media (max-width: 900px) {
+    .ig-embeds-grid { grid-template-columns: repeat(2, 1fr); }
   }
-  .galeria-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-size: 0.8rem;
-    font-style: italic;
-    color: rgba(255,255,255,0.5);
-    text-align: center;
-    padding: 1rem;
+  @media (max-width: 600px) {
+    .ig-embeds-grid { grid-template-columns: 1fr; }
   }
-  .galeria-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(26, 20, 16, 0);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s;
-  }
-  .galeria-item:hover .galeria-overlay { background: rgba(26, 20, 16, 0.5); }
-  .galeria-overlay-text {
-    color: white;
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    font-style: italic;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  .galeria-item:hover .galeria-overlay-text { opacity: 1; }
 
   /* ─── AGENDAMENTO ─── */
   #agendamento {
@@ -893,8 +858,6 @@
     .sobre-grid,
     .triagem-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .sobre-img-tag { position: static; margin-top: 1rem; max-width: 100%; }
-    .galeria-grid { grid-template-columns: repeat(2, 1fr); }
-    .galeria-item:first-child { grid-column: span 2; }
     .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .nav-links { display: none; }
     .nav-toggle { display: flex; }
@@ -905,8 +868,6 @@
     .hero-actions { flex-direction: column; }
     .hero-actions a, .hero-actions button { width: 100%; text-align: center; justify-content: center; }
     .dep-grid { grid-template-columns: 1fr; }
-    .galeria-grid { grid-template-columns: repeat(2, 1fr); }
-    .galeria-item:first-child { grid-column: span 2; grid-row: span 1; }
     .agenda-actions { flex-direction: column; align-items: center; }
     .proc-grid { grid-template-columns: 1fr; }
   }
@@ -922,7 +883,7 @@
     <li><a href="#procedimentos">Procedimentos</a></li>
     <li><a href="#triagem">Triagem</a></li>
     <li><a href="#depoimentos">Resultados</a></li>
-    <li><a href="https://wa.me/5521999999999" target="_blank" class="nav-cta">Agendar ↗</a></li>
+    <li><a href="https://wa.me/5521964803898" target="_blank" class="nav-cta">Agendar ↗</a></li>
   </ul>
   <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -933,7 +894,7 @@
   <a href="#procedimentos" onclick="toggleMenu()">Procedimentos</a>
   <a href="#triagem" onclick="toggleMenu()">Triagem</a>
   <a href="#depoimentos" onclick="toggleMenu()">Resultados</a>
-  <a href="https://wa.me/5521999999999" target="_blank" class="btn-primary" style="justify-content: center;">Agendar via WhatsApp ↗</a>
+  <a href="https://wa.me/5521964803898" target="_blank" class="btn-primary" style="justify-content: center;">Agendar via WhatsApp ↗</a>
 </div>
 
 <!-- ─── HERO ─── -->
@@ -952,7 +913,7 @@
       para revelar o melhor de você.
     </p>
     <div class="hero-actions">
-      <a href="https://wa.me/5521999999999?text=Olá,%20gostaria%20de%20agendar%20uma%20avaliação!" 
+      <a href="https://wa.me/5521964803898?text=Olá,%20gostaria%20de%20agendar%20uma%20avaliação!" 
          target="_blank" class="btn-primary">
         💬 Falar com a Dra. Cristiane
       </a>
@@ -1036,37 +997,37 @@
       produtos premium, garantindo segurança, eficácia e resultados que você pode ver.
     </p>
     <div class="proc-grid">
-      <a href="#triagem" class="proc-card reveal">
+      <a href="procedimentos/bioestimulacao.html" class="proc-card reveal">
         <div class="proc-num">01</div>
         <div class="proc-name">Drenagem Linfática Avançada</div>
         <div class="proc-desc">Protocolo exclusivo Drenamais para redução de inchaço, celulite e modelação corporal com técnicas manuais e tecnologia.</div>
         <div class="proc-link">Saiba mais</div>
       </a>
-      <a href="#triagem" class="proc-card reveal">
+      <a href="procedimentos/tratamento-facial.html" class="proc-card reveal">
         <div class="proc-num">02</div>
         <div class="proc-name">Bioestimulação com Exossomos</div>
         <div class="proc-desc">Regeneração celular de alta performance. Protocolo com exossomos para rejuvenescimento profundo e resultados visíveis em semanas.</div>
         <div class="proc-link">Saiba mais</div>
       </a>
-      <a href="#triagem" class="proc-card reveal">
+      <a href="procedimentos/modelagem-corporal.html" class="proc-card reveal">
         <div class="proc-num">03</div>
         <div class="proc-name">Tratamento Facial Avançado</div>
         <div class="proc-desc">Protocolos personalizados de rejuvenescimento facial, bioremodelação, preenchimento e bioestimulação com as melhores tecnologias do mercado.</div>
         <div class="proc-link">Saiba mais</div>
       </a>
-      <a href="#triagem" class="proc-card reveal">
+      <a href="procedimentos/capilar.html" class="proc-card reveal">
         <div class="proc-num">04</div>
         <div class="proc-name">Modelagem Corporal</div>
         <div class="proc-desc">Redução de gordura localizada, flacidez e celulite com protocolos combinados de alta frequência, radiofrequência e ultrassom.</div>
         <div class="proc-link">Saiba mais</div>
       </a>
-      <a href="#triagem" class="proc-card reveal">
+      <a href="procedimentos/protocolo-vip.html" class="proc-card reveal">
         <div class="proc-num">05</div>
         <div class="proc-name">Capilar & Couro Cabeludo</div>
         <div class="proc-desc">Tratamentos especializados para queda, oleosidade e saúde do couro cabeludo com protocolos bioestimuladores exclusivos.</div>
         <div class="proc-link">Saiba mais</div>
       </a>
-      <a href="#triagem" class="proc-card reveal">
+      <a href="procedimentos/drenagem-linfatica.html" class="proc-card reveal">
         <div class="proc-num">06</div>
         <div class="proc-name">Protocolo VIP Completo</div>
         <div class="proc-desc">Experiência premium e exclusiva que combina múltiplos procedimentos em uma jornada de transformação completa e personalizada.</div>
@@ -1215,7 +1176,7 @@
       </div>
     </div>
     <div style="text-align: center; margin-top: 2rem;">
-      <a href="https://www.google.com/maps" target="_blank" class="google-badge">
+      <a href="https://share.google/AL1R0X8oldeIAYbsD" target="_blank" class="google-badge">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
           <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
           <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -1229,39 +1190,32 @@
 </section>
 
 <!-- ─── GALERIA ─── -->
-<section id="galeria">
+<section id="galeria" style="background: var(--nude); padding-bottom: var(--section-pad);">
   <div class="container">
     <div class="galeria-intro">
       <div>
-        <span class="section-tag reveal">Galeria</span>
-        <h2 class="section-title reveal">Resultados que <em>falam</em></h2>
+        <span class="section-tag reveal">Galeria & Resultados</span>
+        <h2 class="section-title reveal">Transformações que <em>inspiram</em></h2>
       </div>
-      <a href="https://instagram.com/drenamaisdracris" target="_blank" class="btn-secondary reveal">Ver no Instagram</a>
+      <a href="https://www.instagram.com/drenamaisdracris" target="_blank" class="btn-secondary reveal" style="display:inline-flex;align-items:center;gap:8px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+        @drenamaisdracris
+      </a>
     </div>
-  </div>
-  <div class="galeria-grid">
-    <div class="galeria-item" style="background: var(--rose);">
-      <div class="galeria-placeholder">📸 Antes & Depois<br>Resultado em destaque</div>
-      <div class="galeria-overlay"><div class="galeria-overlay-text">Ver resultado</div></div>
+    <div class="ig-embeds-grid reveal">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DPwC-h5jt_9/" data-instgrm-version="14" style="max-width:100%;min-width:0;width:100%;margin:0;"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DXKOpelDhNd/" data-instgrm-version="14" style="max-width:100%;min-width:0;width:100%;margin:0;"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DW91vbZDeDd/" data-instgrm-version="14" style="max-width:100%;min-width:0;width:100%;margin:0;"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DWALrQsjYzK/" data-instgrm-version="14" style="max-width:100%;min-width:0;width:100%;margin:0;"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DRno765Dj1E/" data-instgrm-version="14" style="max-width:100%;min-width:0;width:100%;margin:0;"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DO_WjvwDmaq/" data-instgrm-version="14" style="max-width:100%;min-width:0;width:100%;margin:0;"></blockquote>
     </div>
-    <div class="galeria-item" style="background: var(--nude-deep);">
-      <div class="galeria-placeholder">📸 Tratamento facial</div>
-      <div class="galeria-overlay"><div class="galeria-overlay-text">Ver mais</div></div>
-    </div>
-    <div class="galeria-item" style="background: var(--rose-dark);">
-      <div class="galeria-placeholder">📸 Clínica</div>
-      <div class="galeria-overlay"><div class="galeria-overlay-text">Ver mais</div></div>
-    </div>
-    <div class="galeria-item" style="background: var(--gold);">
-      <div class="galeria-placeholder">📸 Protocolo corporal</div>
-      <div class="galeria-overlay"><div class="galeria-overlay-text">Ver mais</div></div>
-    </div>
-    <div class="galeria-item" style="background: #a87868;">
-      <div class="galeria-placeholder">📸 Resultado facial</div>
-      <div class="galeria-overlay"><div class="galeria-overlay-text">Ver mais</div></div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="https://www.instagram.com/drenamaisdracris" target="_blank" class="btn-primary">Ver todos os resultados no Instagram →</a>
     </div>
   </div>
 </section>
+<script async src="//www.instagram.com/embed.js"></script>
 
 <!-- ─── AGENDAMENTO ─── -->
 <section id="agendamento">
@@ -1273,7 +1227,7 @@
       passo rumo à sua transformação.
     </p>
     <div class="agenda-actions reveal">
-      <a href="https://wa.me/5521999999999?text=Olá,%20Dra.%20Cristiane!%20Gostaria%20de%20agendar%20uma%20avaliação." 
+      <a href="https://wa.me/5521964803898?text=Olá,%20Dra.%20Cristiane!%20Gostaria%20de%20agendar%20uma%20avaliação." 
          target="_blank" class="btn-white">
         💬 WhatsApp direto
       </a>
@@ -1298,31 +1252,49 @@
         Mais de 25 anos transformando vidas com ciência, técnica e cuidado.
       </p>
       <div class="footer-social">
-        <a href="https://instagram.com/drenamaisdracris" target="_blank" title="Instagram">ig</a>
-        <a href="https://wa.me/5521999999999" target="_blank" title="WhatsApp">wa</a>
-        <a href="https://abre.bio/DrenaMais" target="_blank" title="LinkBio">🔗</a>
+        <a href="https://www.instagram.com/drenamaisdracris" target="_blank" title="Instagram">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://wa.me/5521964803898" target="_blank" title="WhatsApp">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        </a>
+        <a href="https://www.facebook.com" target="_blank" title="Facebook (em breve)">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com" target="_blank" title="TikTok (em breve)">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.77 1.52V6.76a4.85 4.85 0 01-1-.07z"/></svg>
+        </a>
       </div>
     </div>
     <div class="footer-col">
       <h4>Procedimentos</h4>
       <ul>
         <li><a href="#triagem">Drenagem Linfática</a></li>
-        <li><a href="#triagem">Bioestimulação</a></li>
-        <li><a href="#triagem">Tratamento Facial</a></li>
+        <li><a href="#triagem">Bioestimulação com Exossomos</a></li>
+        <li><a href="#triagem">Tratamento Facial Avançado</a></li>
         <li><a href="#triagem">Modelagem Corporal</a></li>
-        <li><a href="#triagem">Capilar</a></li>
-        <li><a href="#triagem">Protocolo VIP</a></li>
+        <li><a href="#triagem">Tratamento Capilar</a></li>
+        <li><a href="#triagem">Protocolo VIP Completo</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Contato & Horários</h4>
       <ul>
-        <li>📍 Campo Grande, Rio de Janeiro – RJ</li>
-        <li>📞 (21) 9 9999-9999</li>
-        <li>📧 contato@drenamais.com.br</li>
+        <li>📍 R. Viúva Dantas, 214<br>Sala 410 · Campo Grande<br>Rio de Janeiro – RJ, 23052-090</li>
+        <li style="margin-top:0.5rem;">
+          <a href="https://wa.me/5521964803898" target="_blank">📞 (21) 96480-3898</a>
+        </li>
+        <li><a href="mailto:contato@drenamais.com.br">✉️ contato@drenamais.com.br</a></li>
         <li style="margin-top: 0.5rem;">⏰ Seg–Sex: 8h às 19h</li>
         <li>⏰ Sábado: 8h às 14h</li>
       </ul>
+      <div style="margin-top:1.5rem;border-radius:4px;overflow:hidden;opacity:0.8;">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.0!2d-43.5623!3d-22.9068!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sR.+Vi%C3%BAva+Dantas%2C+214+-+Campo+Grande%2C+Rio+de+Janeiro+-+RJ!5e0!3m2!1spt-BR!2sbr!4v1"
+          width="100%" height="130" style="border:0;display:block;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" title="Localização Drenamais">
+        </iframe>
+      </div>
     </div>
   </div>
   <div class="footer-bottom">
@@ -1332,7 +1304,7 @@
 </footer>
 
 <!-- ─── WHATSAPP FLOAT ─── -->
-<a href="https://wa.me/5521999999999?text=Olá,%20Dra.%20Cristiane!%20Vi%20o%20site%20e%20gostaria%20de%20mais%20informações." 
+<a href="https://wa.me/5521964803898?text=Olá,%20Dra.%20Cristiane!%20Vi%20o%20site%20e%20gostaria%20de%20mais%20informações." 
    target="_blank" class="whatsapp-float" title="Falar no WhatsApp">
   <div class="whatsapp-pulse"></div>
   <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
@@ -1386,7 +1358,7 @@
       `📝 Observações: ${obs || 'Nenhuma'}`
     );
     
-    window.open(`https://wa.me/5521999999999?text=${msg}`, '_blank');
+    window.open(`https://wa.me/5521964803898?text=${msg}`, '_blank');
     
     const btn = form.querySelector('.form-submit');
     btn.textContent = '✓ Enviado! Redirecionando para WhatsApp...';
