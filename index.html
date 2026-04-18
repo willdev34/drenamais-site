@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Drenamais | Dra. Cristiane Gomes – Biomédica, Estética Avançada e Fisioterapia em Campo Grande, RJ. Mais de 25 anos promovendo saúde e bem-estar com protocolos exclusivos.">
+<title>Drenamais | Dra. Cristiane Gomes – Estética Avançada Campo Grande RJ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #C9A99A;
+    --rose-light: #F0E4DF;
+    --rose-dark: #8B5E52;
+    --nude: #E8D5CC;
+    --nude-deep: #C4A99A;
+    --black: #1A1410;
+    --charcoal: #2D2520;
+    --warm-white: #FBF7F5;
+    --cream: #F5EDE8;
+    --gold: #B8956A;
+    --gold-light: #D4B896;
+    --text-muted: #7A6860;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --nav-h: 72px;
+    --section-pad: clamp(4rem, 8vw, 7rem);
+    --max-w: 1200px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--warm-white);
+    color: var(--black);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(1.5rem, 5vw, 4rem);
+    background: rgba(251, 247, 245, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201, 169, 154, 0.2);
+    transition: background 0.3s;
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.65rem;
+    font-weight: 600;
+    color: var(--black);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--rose-dark); }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--rose-dark); }
+  .nav-cta {
+    background: var(--black);
+    color: var(--warm-white) !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+  }
+  .nav-cta:hover { background: var(--charcoal); color: var(--warm-white) !important; }
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--black);
+    transition: all 0.3s;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: var(--nav-h);
+    left: 0; right: 0;
+    background: var(--warm-white);
+    padding: 2rem;
+    border-bottom: 1px solid var(--nude);
+    z-index: 99;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    text-decoration: none;
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100svh;
+    padding-top: var(--nav-h);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 0;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 55%;
+    height: 120%;
+    background: var(--nude);
+    clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+    z-index: 0;
+  }
+  .hero-text {
+    padding: clamp(2rem, 6vw, 6rem) clamp(1.5rem, 5vw, 5rem);
+    position: relative;
+    z-index: 1;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rose-dark);
+    margin-bottom: 1.5rem;
+  }
+  .hero-badge::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--rose-dark);
+  }
+  .hero-h1 {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--black);
+    margin-bottom: 0.5rem;
+  }
+  .hero-h1 em {
+    font-style: italic;
+    color: var(--rose-dark);
+  }
+  .hero-sub {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-weight: 300;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+  .hero-desc {
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    max-width: 420px;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--black);
+    color: var(--warm-white);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--rose-dark); transform: translateY(-2px); }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: transparent;
+    color: var(--black);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border: 1px solid var(--rose-dark);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { background: var(--rose-dark); color: white; }
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(201, 169, 154, 0.3);
+  }
+  .hero-stat strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--rose-dark);
+    line-height: 1;
+  }
+  .hero-stat span {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .hero-image {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    min-height: 600px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .hero-img-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 620px;
+    background: linear-gradient(160deg, var(--nude-deep) 0%, var(--rose) 60%, var(--rose-dark) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .hero-img-text {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 1rem;
+  }
+  .hero-img-text strong {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: var(--section-pad) clamp(1.5rem, 5vw, 4rem); }
+  .container { max-width: var(--max-w); margin: 0 auto; }
+  .section-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--rose-dark);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--black);
+    margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--rose-dark); }
+
+  /* ─── SOBRE ─── */
+  #sobre {
+    background: var(--warm-white);
+  }
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: center;
+  }
+  .sobre-img-wrap {
+    position: relative;
+  }
+  .sobre-img-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, var(--rose-light) 0%, var(--nude) 50%, var(--nude-deep) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--rose-dark);
+    text-align: center;
+    padding: 2rem;
+  }
+  .sobre-img-tag {
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    background: var(--black);
+    color: var(--warm-white);
+    padding: 1.5rem;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-style: italic;
+    max-width: 200px;
+  }
+  .sobre-text p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--charcoal);
+    margin-bottom: 1.2rem;
+  }
+  .credenciais {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: var(--cream);
+    border-left: 3px solid var(--rose-dark);
+  }
+  .credencial-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.88rem;
+    color: var(--charcoal);
+  }
+  .credencial-item::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: var(--rose-dark);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ─── PROCEDIMENTOS ─── */
+  #procedimentos {
+    background: var(--black);
+    color: var(--warm-white);
+  }
+  #procedimentos .section-title { color: var(--warm-white); }
+  #procedimentos .section-tag { color: var(--gold-light); }
+  .proc-intro {
+    font-size: 1rem;
+    color: rgba(251, 247, 245, 0.65);
+    max-width: 540px;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+  .proc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: rgba(201, 169, 154, 0.15);
+  }
+  .proc-card {
+    background: var(--charcoal);
+    padding: 2.5rem 2rem;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .proc-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--rose);
+    transition: width 0.3s;
+  }
+  .proc-card:hover { background: #241f1b; }
+  .proc-card:hover::after { width: 100%; }
+  .proc-num {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: var(--rose);
+    margin-bottom: 1.2rem;
+  }
+  .proc-name {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--warm-white);
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+  }
+  .proc-desc {
+    font-size: 0.85rem;
+    color: rgba(251, 247, 245, 0.55);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  .proc-link {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rose);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .proc-link::after {
+    content: '→';
+    transition: transform 0.2s;
+  }
+  .proc-card:hover .proc-link::after { transform: translateX(4px); }
+
+  /* ─── TRIAGEM / FORMULÁRIO ─── */
+  #triagem {
+    background: var(--cream);
+  }
+  .triagem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .triagem-info p {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+  }
+  .triagem-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+  }
+  .benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: var(--charcoal);
+    line-height: 1.6;
+  }
+  .benefit-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--rose-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+  }
+  .form-card {
+    background: white;
+    padding: 2.5rem;
+    box-shadow: 0 2px 40px rgba(139, 94, 82, 0.08);
+  }
+  .form-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 300;
+    margin-bottom: 0.4rem;
+    color: var(--black);
+  }
+  .form-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--nude);
+    background: var(--warm-white);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    color: var(--black);
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--rose-dark);
+  }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-submit {
+    width: 100%;
+    padding: 1.1rem;
+    background: var(--rose-dark);
+    color: white;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--black); transform: translateY(-1px); }
+  .form-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 1rem;
+    line-height: 1.6;
+  }
+
+  /* ─── DEPOIMENTOS ─── */
+  #depoimentos {
+    background: var(--warm-white);
+  }
+  .dep-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .dep-card {
+    background: var(--cream);
+    padding: 2rem;
+    position: relative;
+  }
+  .dep-stars {
+    color: var(--gold);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+  .dep-text {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+  .dep-author {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .dep-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--nude-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-style: italic;
+    color: white;
+    flex-shrink: 0;
+  }
+  .dep-name { font-size: 0.88rem; font-weight: 500; color: var(--black); }
+  .dep-proc { font-size: 0.78rem; color: var(--text-muted); }
+  .google-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 3rem;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--nude);
+  }
+
+  /* ─── GALERIA ─── */
+  #galeria {
+    background: var(--nude);
+    padding-bottom: 0;
+  }
+  .galeria-intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+  }
+  .galeria-item {
+    aspect-ratio: 1;
+    background: var(--nude-deep);
+    overflow: hidden;
+    position: relative;
+  }
+  .galeria-item:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  .galeria-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 1rem;
+  }
+  .galeria-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(26, 20, 16, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+  }
+  .galeria-item:hover .galeria-overlay { background: rgba(26, 20, 16, 0.5); }
+  .galeria-overlay-text {
+    color: white;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-style: italic;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .galeria-item:hover .galeria-overlay-text { opacity: 1; }
+
+  /* ─── AGENDAMENTO ─── */
+  #agendamento {
+    background: var(--rose-dark);
+    color: white;
+    text-align: center;
+  }
+  #agendamento .section-tag { color: rgba(255,255,255,0.6); }
+  #agendamento .section-title { color: white; }
+  .agenda-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.75);
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.8;
+  }
+  .agenda-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-white {
+    background: white;
+    color: var(--rose-dark);
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 2.2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.2s;
+  }
+  .btn-white:hover { background: var(--black); color: white; }
+  .btn-outline-white {
+    background: transparent;
+    color: white;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem 2.2rem;
+    border: 1px solid rgba(255,255,255,0.5);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: all 0.2s;
+  }
+  .btn-outline-white:hover { border-color: white; background: rgba(255,255,255,0.1); }
+  .calendly-embed {
+    max-width: 700px;
+    margin: 3rem auto 0;
+    background: rgba(255,255,255,0.08);
+    padding: 3rem 2rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    color: rgba(255,255,255,0.6);
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--black);
+    color: var(--warm-white);
+    padding: 4rem clamp(1.5rem, 5vw, 4rem) 2rem;
+  }
+  .footer-grid {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+  }
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--warm-white);
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+  }
+  .footer-logo span { color: var(--rose); font-style: italic; }
+  .footer-desc {
+    font-size: 0.88rem;
+    color: rgba(251, 247, 245, 0.5);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    max-width: 300px;
+  }
+  .footer-social {
+    display: flex;
+    gap: 0.8rem;
+  }
+  .footer-social a {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(201, 169, 154, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--rose-light);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+  }
+  .footer-social a:hover { border-color: var(--rose); background: rgba(201, 169, 154, 0.1); }
+  .footer-col h4 {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 1.2rem;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+  .footer-col ul li { font-size: 0.88rem; color: rgba(251, 247, 245, 0.6); line-height: 1.5; }
+  .footer-col ul a { color: inherit; text-decoration: none; transition: color 0.2s; }
+  .footer-col ul a:hover { color: var(--rose-light); }
+  .footer-bottom {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(201, 169, 154, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: rgba(251, 247, 245, 0.35);
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* ─── WHATSAPP FLOAT ─── */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 200;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .whatsapp-float:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 28px rgba(37, 211, 102, 0.5);
+  }
+  .whatsapp-float svg { width: 30px; height: 30px; }
+  .whatsapp-pulse {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    background: #25D366;
+    opacity: 0.4;
+    animation: pulse 2.5s ease-out infinite;
+  }
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 0.4; }
+    100% { transform: scale(1.8); opacity: 0; }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    #hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    #hero::before { display: none; }
+    .hero-image {
+      min-height: 320px;
+      order: -1;
+    }
+    .hero-img-placeholder { min-height: 320px; }
+    .hero-text { padding: 3rem 1.5rem 2rem; }
+    .hero-stats { gap: 1.5rem; }
+    .sobre-grid,
+    .triagem-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .sobre-img-tag { position: static; margin-top: 1rem; max-width: 100%; }
+    .galeria-grid { grid-template-columns: repeat(2, 1fr); }
+    .galeria-item:first-child { grid-column: span 2; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-actions { flex-direction: column; }
+    .hero-actions a, .hero-actions button { width: 100%; text-align: center; justify-content: center; }
+    .dep-grid { grid-template-columns: 1fr; }
+    .galeria-grid { grid-template-columns: repeat(2, 1fr); }
+    .galeria-item:first-child { grid-column: span 2; grid-row: span 1; }
+    .agenda-actions { flex-direction: column; align-items: center; }
+    .proc-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="#hero" class="nav-logo">Drena<span>mais</span></a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#procedimentos">Procedimentos</a></li>
+    <li><a href="#triagem">Triagem</a></li>
+    <li><a href="#depoimentos">Resultados</a></li>
+    <li><a href="https://wa.me/5521999999999" target="_blank" class="nav-cta">Agendar ↗</a></li>
+  </ul>
+  <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#sobre" onclick="toggleMenu()">Sobre</a>
+  <a href="#procedimentos" onclick="toggleMenu()">Procedimentos</a>
+  <a href="#triagem" onclick="toggleMenu()">Triagem</a>
+  <a href="#depoimentos" onclick="toggleMenu()">Resultados</a>
+  <a href="https://wa.me/5521999999999" target="_blank" class="btn-primary" style="justify-content: center;">Agendar via WhatsApp ↗</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-text">
+    <div class="hero-badge">Estética avançada · Campo Grande, RJ</div>
+    <h1 class="hero-h1">
+      Sua beleza,<br>
+      <em>sua essência,</em><br>
+      realçada.
+    </h1>
+    <p class="hero-sub">Protocolos exclusivos para quem busca<br>resultados reais e duradouros.</p>
+    <p class="hero-desc">
+      Biomédica, pesquisadora e perita com mais de 25 anos dedicados 
+      à saúde, bem-estar e estética avançada. Cada protocolo é personalizado 
+      para revelar o melhor de você.
+    </p>
+    <div class="hero-actions">
+      <a href="https://wa.me/5521999999999?text=Olá,%20gostaria%20de%20agendar%20uma%20avaliação!" 
+         target="_blank" class="btn-primary">
+        💬 Falar com a Dra. Cristiane
+      </a>
+      <a href="#triagem" class="btn-secondary">Fazer triagem gratuita</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <strong>+25</strong>
+        <span>anos de experiência</span>
+      </div>
+      <div class="hero-stat">
+        <strong>12k</strong>
+        <span>seguidoras Instagram</span>
+      </div>
+      <div class="hero-stat">
+        <strong>100%</strong>
+        <span>protocolos personalizados</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="hero-img-placeholder">
+      <div>
+        <strong>📸 Foto da Dra. Cristiane</strong>
+        <span class="hero-img-text">
+          Inserir foto profissional<br>
+          da clínica ou da médica aqui
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SOBRE ─── -->
+<section id="sobre">
+  <div class="container">
+    <div class="sobre-grid">
+      <div class="sobre-img-wrap reveal">
+        <div class="sobre-img-placeholder">
+          📸 Foto da Dra. Cristiane<br><br>
+          <small style="font-size:0.8rem; opacity:0.6">Em ambiente clínico ou de consultório</small>
+        </div>
+        <div class="sobre-img-tag">
+          "Saúde e beleza que transforma vidas desde 1999"
+        </div>
+      </div>
+      <div class="sobre-text reveal">
+        <span class="section-tag">Sobre a especialista</span>
+        <h2 class="section-title">Dra. Cristiane <em>Gomes</em></h2>
+        <p>
+          Biomédica graduada e pesquisadora científica pela UERJ, com pós-graduação em 
+          Estética Avançada e Fisioterapia Dermatofuncional. Perita credenciada pela APJERJ 
+          com sólida atuação clínica e acadêmica.
+        </p>
+        <p>
+          Com mais de 25 anos de trajetória, a Dra. Cristiane alia ciência de ponta a um 
+          atendimento humanizado e personalizado — porque cada paciente é única e merece 
+          um protocolo desenhado especialmente para ela.
+        </p>
+        <div class="credenciais">
+          <div class="credencial-item">Biomédica & Pesquisadora Científica — UERJ</div>
+          <div class="credencial-item">Perita credenciada — APJERJ</div>
+          <div class="credencial-item">Especialista em Estética Avançada</div>
+          <div class="credencial-item">Fisioterapia Dermatofuncional</div>
+          <div class="credencial-item">+25 anos promovendo saúde e bem-estar</div>
+          <div class="credencial-item">Palestrante e formadora de profissionais</div>
+        </div>
+        <a href="#triagem" class="btn-primary">Agendar avaliação gratuita</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCEDIMENTOS ─── -->
+<section id="procedimentos">
+  <div class="container">
+    <span class="section-tag reveal">Especialidades</span>
+    <h2 class="section-title reveal">Procedimentos <em>exclusivos</em></h2>
+    <p class="proc-intro reveal">
+      Cada procedimento é realizado com equipamentos de última geração e 
+      produtos premium, garantindo segurança, eficácia e resultados que você pode ver.
+    </p>
+    <div class="proc-grid">
+      <a href="#triagem" class="proc-card reveal">
+        <div class="proc-num">01</div>
+        <div class="proc-name">Drenagem Linfática Avançada</div>
+        <div class="proc-desc">Protocolo exclusivo Drenamais para redução de inchaço, celulite e modelação corporal com técnicas manuais e tecnologia.</div>
+        <div class="proc-link">Saiba mais</div>
+      </a>
+      <a href="#triagem" class="proc-card reveal">
+        <div class="proc-num">02</div>
+        <div class="proc-name">Bioestimulação com Exossomos</div>
+        <div class="proc-desc">Regeneração celular de alta performance. Protocolo com exossomos para rejuvenescimento profundo e resultados visíveis em semanas.</div>
+        <div class="proc-link">Saiba mais</div>
+      </a>
+      <a href="#triagem" class="proc-card reveal">
+        <div class="proc-num">03</div>
+        <div class="proc-name">Tratamento Facial Avançado</div>
+        <div class="proc-desc">Protocolos personalizados de rejuvenescimento facial, bioremodelação, preenchimento e bioestimulação com as melhores tecnologias do mercado.</div>
+        <div class="proc-link">Saiba mais</div>
+      </a>
+      <a href="#triagem" class="proc-card reveal">
+        <div class="proc-num">04</div>
+        <div class="proc-name">Modelagem Corporal</div>
+        <div class="proc-desc">Redução de gordura localizada, flacidez e celulite com protocolos combinados de alta frequência, radiofrequência e ultrassom.</div>
+        <div class="proc-link">Saiba mais</div>
+      </a>
+      <a href="#triagem" class="proc-card reveal">
+        <div class="proc-num">05</div>
+        <div class="proc-name">Capilar & Couro Cabeludo</div>
+        <div class="proc-desc">Tratamentos especializados para queda, oleosidade e saúde do couro cabeludo com protocolos bioestimuladores exclusivos.</div>
+        <div class="proc-link">Saiba mais</div>
+      </a>
+      <a href="#triagem" class="proc-card reveal">
+        <div class="proc-num">06</div>
+        <div class="proc-name">Protocolo VIP Completo</div>
+        <div class="proc-desc">Experiência premium e exclusiva que combina múltiplos procedimentos em uma jornada de transformação completa e personalizada.</div>
+        <div class="proc-link">Saiba mais</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRIAGEM ─── -->
+<section id="triagem">
+  <div class="container">
+    <div class="triagem-grid">
+      <div class="triagem-info">
+        <span class="section-tag reveal">Triagem inteligente</span>
+        <h2 class="section-title reveal">Vamos entender<br>o que você <em>precisa</em></h2>
+        <p class="reveal">
+          Antes de qualquer consulta, nossa triagem garante que cada atendimento 
+          seja 100% personalizado para as suas necessidades — sem surpresas.
+        </p>
+        <div class="triagem-benefits reveal">
+          <div class="benefit-item">
+            <div class="benefit-icon">✓</div>
+            <div><strong>Avaliação personalizada</strong><br>
+            Entendemos sua queixa principal antes do atendimento</div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">⏱</div>
+            <div><strong>Agendamento prioritário</strong><br>
+            Após a triagem, você recebe disponibilidades com prioridade</div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">💬</div>
+            <div><strong>Contato direto via WhatsApp</strong><br>
+            A Dra. Cristiane ou sua equipe responde em até 24h</div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">🔒</div>
+            <div><strong>Privacidade garantida</strong><br>
+            Suas informações são tratadas com total sigilo e respeito</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-card reveal">
+        <h3 class="form-title">Triagem gratuita</h3>
+        <p class="form-subtitle">Preencha e entraremos em contato em até 24 horas</p>
+        <form id="triagemForm" onsubmit="submitForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome">Nome completo *</label>
+              <input type="text" id="nome" name="nome" required placeholder="Seu nome">
+            </div>
+            <div class="form-group">
+              <label for="whatsapp">WhatsApp *</label>
+              <input type="tel" id="whatsapp" name="whatsapp" required placeholder="(21) 99999-9999">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="procedimento">Procedimento de interesse *</label>
+            <select id="procedimento" name="procedimento" required>
+              <option value="">Selecione...</option>
+              <option>Drenagem Linfática Avançada</option>
+              <option>Bioestimulação com Exossomos</option>
+              <option>Tratamento Facial Avançado</option>
+              <option>Modelagem Corporal</option>
+              <option>Tratamento Capilar</option>
+              <option>Protocolo VIP Completo</option>
+              <option>Não sei ainda – quero orientação</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="objetivo">Qual é seu principal objetivo?</label>
+            <select id="objetivo" name="objetivo">
+              <option value="">Selecione...</option>
+              <option>Rejuvenescimento facial</option>
+              <option>Redução de gordura / celulite</option>
+              <option>Melhora da pele e firmeza</option>
+              <option>Saúde capilar</option>
+              <option>Recuperação pós-cirúrgica</option>
+              <option>Bem-estar geral e saúde</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="disponibilidade">Melhor período para atendimento</label>
+            <select id="disponibilidade" name="disponibilidade">
+              <option value="">Selecione...</option>
+              <option>Manhã (8h–12h)</option>
+              <option>Tarde (13h–18h)</option>
+              <option>Qualquer horário</option>
+              <option>Sábado</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="obs">Observações (opcional)</label>
+            <textarea id="obs" name="obs" placeholder="Conte um pouco sobre sua queixa principal ou dúvidas..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Enviar minha triagem →</button>
+          <p class="form-note">
+            🔒 Seus dados são sigilosos e nunca compartilhados.<br>
+            Respondemos em até 24h via WhatsApp.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DEPOIMENTOS ─── -->
+<section id="depoimentos">
+  <div class="container">
+    <span class="section-tag reveal">Resultados reais</span>
+    <h2 class="section-title reveal">O que dizem nossas <em>pacientes</em></h2>
+    <div class="dep-grid">
+      <div class="dep-card reveal">
+        <div class="dep-stars">★★★★★</div>
+        <p class="dep-text">"A Dra. Cristiane transformou minha autoestima. Depois do protocolo de bioestimulação com exossomos, minha pele ficou outra! Resultado incrível e atendimento muito humanizado."</p>
+        <div class="dep-author">
+          <div class="dep-avatar">M</div>
+          <div>
+            <div class="dep-name">Maria S.</div>
+            <div class="dep-proc">Bioestimulação Facial · Campo Grande</div>
+          </div>
+        </div>
+      </div>
+      <div class="dep-card reveal">
+        <div class="dep-stars">★★★★★</div>
+        <p class="dep-text">"Fiz o protocolo de drenagem linfática e emagrecimento. Em 3 meses de tratamento, perdi medidas e a celulite reduziu muito. A equipe é muito atenciosa e o ambiente é lindo!"</p>
+        <div class="dep-author">
+          <div class="dep-avatar">A</div>
+          <div>
+            <div class="dep-name">Ana P.</div>
+            <div class="dep-proc">Drenagem + Modelagem Corporal</div>
+          </div>
+        </div>
+      </div>
+      <div class="dep-card reveal">
+        <div class="dep-stars">★★★★★</div>
+        <p class="dep-text">"Super profissional, atualizada com as melhores tecnologias. A Dra. Cristiane tem um conhecimento enorme e explica cada passo do tratamento. Recomendo demais!"</p>
+        <div class="dep-author">
+          <div class="dep-avatar">J</div>
+          <div>
+            <div class="dep-name">Juliana R.</div>
+            <div class="dep-proc">Tratamento Facial Completo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="https://www.google.com/maps" target="_blank" class="google-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        Ver avaliações no Google
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GALERIA ─── -->
+<section id="galeria">
+  <div class="container">
+    <div class="galeria-intro">
+      <div>
+        <span class="section-tag reveal">Galeria</span>
+        <h2 class="section-title reveal">Resultados que <em>falam</em></h2>
+      </div>
+      <a href="https://instagram.com/drenamaisdracris" target="_blank" class="btn-secondary reveal">Ver no Instagram</a>
+    </div>
+  </div>
+  <div class="galeria-grid">
+    <div class="galeria-item" style="background: var(--rose);">
+      <div class="galeria-placeholder">📸 Antes & Depois<br>Resultado em destaque</div>
+      <div class="galeria-overlay"><div class="galeria-overlay-text">Ver resultado</div></div>
+    </div>
+    <div class="galeria-item" style="background: var(--nude-deep);">
+      <div class="galeria-placeholder">📸 Tratamento facial</div>
+      <div class="galeria-overlay"><div class="galeria-overlay-text">Ver mais</div></div>
+    </div>
+    <div class="galeria-item" style="background: var(--rose-dark);">
+      <div class="galeria-placeholder">📸 Clínica</div>
+      <div class="galeria-overlay"><div class="galeria-overlay-text">Ver mais</div></div>
+    </div>
+    <div class="galeria-item" style="background: var(--gold);">
+      <div class="galeria-placeholder">📸 Protocolo corporal</div>
+      <div class="galeria-overlay"><div class="galeria-overlay-text">Ver mais</div></div>
+    </div>
+    <div class="galeria-item" style="background: #a87868;">
+      <div class="galeria-placeholder">📸 Resultado facial</div>
+      <div class="galeria-overlay"><div class="galeria-overlay-text">Ver mais</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── AGENDAMENTO ─── -->
+<section id="agendamento">
+  <div class="container" style="text-align:center;">
+    <span class="section-tag reveal">Agenda</span>
+    <h2 class="section-title reveal">Pronta para <em>começar?</em></h2>
+    <p class="agenda-sub reveal">
+      Escolha a forma mais fácil para você entrar em contato e dar o primeiro 
+      passo rumo à sua transformação.
+    </p>
+    <div class="agenda-actions reveal">
+      <a href="https://wa.me/5521999999999?text=Olá,%20Dra.%20Cristiane!%20Gostaria%20de%20agendar%20uma%20avaliação." 
+         target="_blank" class="btn-white">
+        💬 WhatsApp direto
+      </a>
+      <a href="#triagem" class="btn-outline-white">Fazer triagem online</a>
+    </div>
+    <div class="calendly-embed reveal">
+      📅 Aqui será incorporado o calendário do Calendly para agendamento online<br>
+      <small style="font-size:0.8rem; opacity:0.6; margin-top:0.5rem; display:block">
+        Adicione: &lt;div class="calendly-inline-widget" data-url="https://calendly.com/seu-link"&gt;&lt;/div&gt;
+      </small>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">Drena<span>mais</span></div>
+      <p class="footer-desc">
+        Estética avançada e bem-estar em Campo Grande, Rio de Janeiro. 
+        Mais de 25 anos transformando vidas com ciência, técnica e cuidado.
+      </p>
+      <div class="footer-social">
+        <a href="https://instagram.com/drenamaisdracris" target="_blank" title="Instagram">ig</a>
+        <a href="https://wa.me/5521999999999" target="_blank" title="WhatsApp">wa</a>
+        <a href="https://abre.bio/DrenaMais" target="_blank" title="LinkBio">🔗</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Procedimentos</h4>
+      <ul>
+        <li><a href="#triagem">Drenagem Linfática</a></li>
+        <li><a href="#triagem">Bioestimulação</a></li>
+        <li><a href="#triagem">Tratamento Facial</a></li>
+        <li><a href="#triagem">Modelagem Corporal</a></li>
+        <li><a href="#triagem">Capilar</a></li>
+        <li><a href="#triagem">Protocolo VIP</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contato & Horários</h4>
+      <ul>
+        <li>📍 Campo Grande, Rio de Janeiro – RJ</li>
+        <li>📞 (21) 9 9999-9999</li>
+        <li>📧 contato@drenamais.com.br</li>
+        <li style="margin-top: 0.5rem;">⏰ Seg–Sex: 8h às 19h</li>
+        <li>⏰ Sábado: 8h às 14h</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Drenamais | Dra. Cristiane Gomes. Todos os direitos reservados.</span>
+    <span>CRBio · APJERJ · UERJ</span>
+  </div>
+</footer>
+
+<!-- ─── WHATSAPP FLOAT ─── -->
+<a href="https://wa.me/5521999999999?text=Olá,%20Dra.%20Cristiane!%20Vi%20o%20site%20e%20gostaria%20de%20mais%20informações." 
+   target="_blank" class="whatsapp-float" title="Falar no WhatsApp">
+  <div class="whatsapp-pulse"></div>
+  <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<script>
+  // Mobile menu toggle
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Stagger children in grids
+  document.querySelectorAll('.proc-grid .proc-card, .dep-grid .dep-card').forEach((el, i) => {
+    el.style.transitionDelay = `${i * 80}ms`;
+  });
+
+  // Form submit
+  function submitForm(e) {
+    e.preventDefault();
+    const form = e.target;
+    const nome = form.nome.value;
+    const whatsapp = form.whatsapp.value.replace(/\D/g, '');
+    const procedimento = form.procedimento.value;
+    const objetivo = form.objetivo.value;
+    const disponibilidade = form.disponibilidade.value;
+    const obs = form.obs.value;
+    
+    const msg = encodeURIComponent(
+      `Olá, Dra. Cristiane! Fiz a triagem pelo site.\n\n` +
+      `👤 Nome: ${nome}\n` +
+      `💆 Procedimento: ${procedimento}\n` +
+      `🎯 Objetivo: ${objetivo}\n` +
+      `⏰ Disponibilidade: ${disponibilidade}\n` +
+      `📝 Observações: ${obs || 'Nenhuma'}`
+    );
+    
+    window.open(`https://wa.me/5521999999999?text=${msg}`, '_blank');
+    
+    const btn = form.querySelector('.form-submit');
+    btn.textContent = '✓ Enviado! Redirecionando para WhatsApp...';
+    btn.style.background = '#2d5a27';
+    
+    setTimeout(() => {
+      form.reset();
+      btn.textContent = 'Enviar minha triagem →';
+      btn.style.background = '';
+    }, 4000);
+  }
+
+  // Nav background on scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 60 
+      ? 'rgba(251, 247, 245, 0.97)' 
+      : 'rgba(251, 247, 245, 0.92)';
+  });
+</script>
+</body>
+</html>
