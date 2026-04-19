@@ -57,6 +57,21 @@
   .section-title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; line-height: 1.1; color: var(--black); margin-bottom: 1.5rem; }
   .section-title em { font-style: italic; color: var(--rose-dark); }
 
+  /* ─── DARK SECTION OVERRIDES ─── */
+  /* Hero escuro */
+  .proc-hero h1 em { color: var(--rose) !important; }
+
+  /* Indicações (fundo preto) */
+  #indicacoes .section-title { color: white; }
+  #indicacoes .section-title em { color: var(--rose) !important; }
+  #indicacoes .section-tag { color: rgba(251,247,245,0.5); }
+
+  /* CTA (fundo rose-dark) */
+  #cta-proc .section-title { color: white; }
+  #cta-proc .section-title em { color: rgba(255,255,255,0.8) !important; font-style: italic; }
+  #cta-proc .section-tag { color: rgba(255,255,255,0.6); }
+  #cta-proc .cta-sub { color: rgba(255,255,255,0.85); }
+
   /* ABOUT PROCEDURE */
   .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start; }
   .about-text p { font-size: 0.97rem; line-height: 1.9; color: var(--charcoal); margin-bottom: 1.2rem; }
@@ -80,7 +95,7 @@
 
   /* INDICAÇÕES */
   #indicacoes { background: var(--black); color: white; }
-  #indicacoes .section-title { color: white; }
+  /* indicacoes handled below */
   .indicacoes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2.5rem; }
   .indicacoes-list { display: flex; flex-direction: column; gap: 0.8rem; }
   .indicacao-item { display: flex; align-items: center; gap: 1rem; font-size: 0.9rem; color: rgba(251,247,245,0.8); line-height: 1.5; }
@@ -89,7 +104,6 @@
 
   /* CTA */
   #cta-proc { background: var(--rose-dark); text-align: center; }
-  #cta-proc .section-title { color: white; }
   .cta-sub { font-size: 1rem; color: rgba(255,255,255,0.8); max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.8; }
   .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
   .btn-white { background: white; color: var(--rose-dark); font-family: var(--font-body); font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; padding: 1rem 2.2rem; display: inline-flex; align-items: center; gap: 0.6rem; transition: all 0.2s; }
