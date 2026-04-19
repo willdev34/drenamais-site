@@ -1122,6 +1122,26 @@
             </select>
           </div>
           <div class="form-group">
+            <label for="investimento">Faixa de investimento mensal *</label>
+            <select id="investimento" name="investimento" required>
+              <option value="">Selecione...</option>
+              <option>Até R$ 300</option>
+              <option>R$ 300 – R$ 600</option>
+              <option>R$ 600 – R$ 1.000</option>
+              <option>Acima de R$ 1.000</option>
+              <option>Prefiro discutir no atendimento</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="tratamento_anterior">Já fez algum tratamento estético antes?</label>
+            <select id="tratamento_anterior" name="tratamento_anterior">
+              <option value="">Selecione...</option>
+              <option>Sim, já fiz e quero continuar</option>
+              <option>Sim, mas não tive bons resultados</option>
+              <option>Não, é minha primeira vez</option>
+            </select>
+          </div>
+          <div class="form-group">
             <label for="disponibilidade">Melhor período para atendimento</label>
             <select id="disponibilidade" name="disponibilidade">
               <option value="">Selecione...</option>
@@ -1314,6 +1334,39 @@
   </div>
 </footer>
 
+<!-- ─── MODAL CONFIRMAÇÃO ─── -->
+<div id="modalConfirmacao" style="display:none; position:fixed; inset:0; z-index:500; background:rgba(26,20,16,0.7); align-items:center; justify-content:center; padding:1.5rem;">
+  <div style="background:var(--warm-white); max-width:480px; width:100%; padding:3rem 2.5rem; text-align:center; position:relative; animation: modalIn 0.35s ease;">
+    <button onclick="fecharModal()" style="position:absolute; top:1rem; right:1.2rem; background:none; border:none; font-size:1.4rem; color:var(--text-muted); cursor:pointer; line-height:1;">×</button>
+    <div style="width:64px; height:64px; border-radius:50%; background:var(--rose-light); display:flex; align-items:center; justify-content:center; margin:0 auto 1.5rem; font-size:28px;">✓</div>
+    <h3 style="font-family:var(--font-display); font-size:2rem; font-weight:300; color:var(--black); margin-bottom:0.5rem;">
+      Obrigada, <em style="font-style:italic; color:var(--rose-dark);" id="modalNome"></em>!
+    </h3>
+    <p style="font-size:0.95rem; color:var(--text-muted); line-height:1.8; margin-bottom:0.5rem;">
+      Sua triagem foi enviada com sucesso.<br>
+      A Dra. Cristiane ou sua equipe entrará em contato em até <strong>24 horas</strong> pelo seu WhatsApp.
+    </p>
+    <p style="font-size:0.85rem; color:var(--rose-dark); margin-bottom:2rem;">
+      Fique de olho nas mensagens! 💬
+    </p>
+    <a href="https://wa.me/5521964803898" target="_blank" 
+       style="display:inline-flex; align-items:center; gap:0.6rem; background:var(--black); color:white; font-family:var(--font-body); font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase; text-decoration:none; padding:0.9rem 2rem; transition:background 0.2s;"
+       onmouseover="this.style.background='var(--rose-dark)'" onmouseout="this.style.background='var(--black)'">
+      💬 Abrir WhatsApp agora
+    </a>
+    <p style="font-size:0.75rem; color:var(--text-muted); margin-top:1.2rem;">
+      Ou aguarde nosso contato — respondemos em até 24h.
+    </p>
+  </div>
+</div>
+
+<style>
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+</style>
+
 <!-- ─── WHATSAPP FLOAT ─── -->
 <a href="https://wa.me/5521964803898?text=Olá,%20Dra.%20Cristiane!%20Vi%20o%20site%20e%20gostaria%20de%20mais%20informações." 
    target="_blank" class="whatsapp-float" title="Falar no WhatsApp">
@@ -1353,34 +1406,56 @@
   function submitForm(e) {
     e.preventDefault();
     const form = e.target;
-    const nome = form.nome.value;
+    const nome = form.nome.value.trim();
     const whatsapp = form.whatsapp.value.replace(/\D/g, '');
     const procedimento = form.procedimento.value;
     const objetivo = form.objetivo.value;
+    const investimento = form.investimento.value;
+    const tratamento_anterior = form.tratamento_anterior.value;
     const disponibilidade = form.disponibilidade.value;
     const obs = form.obs.value;
-    
+
     const msg = encodeURIComponent(
       `Olá, Dra. Cristiane! Fiz a triagem pelo site.\n\n` +
       `👤 Nome: ${nome}\n` +
+      `📱 WhatsApp: ${form.whatsapp.value}\n` +
       `💆 Procedimento: ${procedimento}\n` +
-      `🎯 Objetivo: ${objetivo}\n` +
-      `⏰ Disponibilidade: ${disponibilidade}\n` +
+      `🎯 Objetivo: ${objetivo || 'Não informado'}\n` +
+      `💰 Investimento mensal: ${investimento || 'Não informado'}\n` +
+      `🔄 Tratamento anterior: ${tratamento_anterior || 'Não informado'}\n` +
+      `⏰ Disponibilidade: ${disponibilidade || 'Não informado'}\n` +
       `📝 Observações: ${obs || 'Nenhuma'}`
     );
-    
+
+    // Abre WhatsApp em nova aba
     window.open(`https://wa.me/5521964803898?text=${msg}`, '_blank');
-    
-    const btn = form.querySelector('.form-submit');
-    btn.textContent = '✓ Enviado! Redirecionando para WhatsApp...';
-    btn.style.background = '#2d5a27';
-    
-    setTimeout(() => {
-      form.reset();
-      btn.textContent = 'Enviar minha triagem →';
-      btn.style.background = '';
-    }, 4000);
+
+    // Mostra modal de confirmação
+    document.getElementById('modalNome').textContent = nome.split(' ')[0];
+    const modal = document.getElementById('modalConfirmacao');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    // Reseta formulário
+    form.reset();
   }
+
+  // Fechar modal
+  function fecharModal() {
+    const modal = document.getElementById('modalConfirmacao');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  // Fechar modal ao clicar fora
+  document.getElementById('modalConfirmacao').addEventListener('click', function(e) {
+    if (e.target === this) fecharModal();
+  });
+
+  // Fechar modal com ESC
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') fecharModal();
+  });
 
   // Nav background on scroll
   const nav = document.querySelector('nav');
